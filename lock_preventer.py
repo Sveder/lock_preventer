@@ -28,13 +28,19 @@ def prevent_lock():
 
 def main():
     while True:
-        if is_sound_playing():
-            print("Sound is currently playing")
-            prevent_lock()
-        else:
-            print("No sound is playing")
-        
-        time.sleep(SLEEP_TIME)
+        try:
+            if is_sound_playing():
+                print("Sound is currently playing")
+                prevent_lock()
+            else:
+                print("No sound is playing")
+            
+            time.sleep(SLEEP_TIME)
+
+        except Exception as e:
+            print(f"Error: {e}")
+
+
 
 if __name__ == "__main__":
     main()
